@@ -1,15 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="app">
+    <h1>Is your string balanced?</h1>
+    <input
+      type="text"
+      v-model="string"
+      placeholder="Type your string here..."
+      required
+    />
+    <Balanced-string :string="string" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import BalancedString from "./components/BalancedString.vue";
 export default {
+  components: { BalancedString },
   name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      string: null,
+    };
   },
 };
 </script>
@@ -22,5 +32,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+input {
+  padding: 20px 30px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid lightblue;
+  width: 400px;
+  margin: 20px auto;
 }
 </style>
