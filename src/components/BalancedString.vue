@@ -4,8 +4,10 @@
       {{ string }}
     </p>
 
-    <div class="message" v-if="message">Your string is balanced!</div>
-    <div class="message" v-if="!message">Your string is not balanced!</div>
+    <div v-if="string">
+      <div class="message" v-if="message">Your string is balanced!</div>
+      <div class="message" v-if="!message">Your string is not balanced!</div>
+    </div>
   </div>
 </template>
 
@@ -24,14 +26,14 @@ export default {
   },
   watch: {
     string(newValue) {
-      console.log(newValue);
-      this.message = this.isStringBalanced(newValue);
-      console.log(this.message);
+      if (this.string.length > 0) {
+        this.message = this.isStringBalanced(newValue);
+      }
     },
   },
   methods: {
     isStringBalanced(string) {
-    // Declaration of a stack to put the opening bracket
+      // Declaration of a stack to put the opening bracket
       let stack = [];
 
       // Going through each character

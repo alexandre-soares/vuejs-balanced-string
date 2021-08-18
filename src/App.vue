@@ -2,6 +2,7 @@
   <div class="app">
     <h1>Is your string balanced?</h1>
     <input
+      ref="input"
       type="text"
       v-model="string"
       placeholder="Type your string here..."
@@ -20,6 +21,15 @@ export default {
     return {
       string: null,
     };
+  },
+  mounted() {
+    this.string = "";
+    this.focusInput();
+  },
+  methods: {
+    focusInput() {
+      this.$refs.input.focus();
+    },
   },
 };
 </script>
